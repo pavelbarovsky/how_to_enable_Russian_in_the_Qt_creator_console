@@ -3,6 +3,7 @@
 #include <clocale>
 
 Далее
+
 int main() {
   setlocale(LC_ALL, "Russian"); // Установка локали для работы с русским языком
   ...
