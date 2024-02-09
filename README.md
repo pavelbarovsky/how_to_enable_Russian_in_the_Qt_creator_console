@@ -3,12 +3,17 @@
 
 ```
 #include <clocale>
+#include <fcntl.h>
+#include <iostream>
+#include <io.h>
+
 ```
 
 Далее
 ```
 int main() {
-  setlocale(LC_ALL, "Russian"); // Установка локали для работы с русским языком
+    setlocale(LC_ALL, "Russian"); // Установка локали для работы с русским языком
+    _setmode(_fileno(stdout), _O_U16TEXT); // Устанавливаем режим вывода в консоль в режиме Unicode
 }
 ```
 
@@ -16,11 +21,20 @@ int main() {
 
 ```
 int main() {
-  setlocale(LC_ALL, "Russian"); // Установка локали для работы с русским языком
-
-    wcout << L"Введи первое число: ";
-    cin >> num1;
+  ...
+  wcout << L"Привет, мир!" << endl;
 }
+```
+
+Чтобы работать со строками, необходимо вместо типа данных string использовать тип данных wstring
+```
+    wstring str = L"Как дела, друг?"; // Используем wstring для работы с широкими символами
+    wcout << str << endl;
+
+    wstring str1 = L"Эй, ";
+    wstring str2 = L" я работаю на русском!!";
+    wstring concatenated = str1 + str2;
+
 ```
 
 Использование префикса L перед строкой является способом указать, что строка является широкой строкой (wide string) в C++. 
